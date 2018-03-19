@@ -1,0 +1,127 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "da0d2aadbeace8ad1499a7075528a819",
+    "packages": [
+        {
+            "name": "ibarcode/barcode1d",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DamonSnow/iBarcode1d.git",
+                "reference": "43e0f760aedca3378225332da32daeacf8470a07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DamonSnow/iBarcode1d/zipball/43e0f760aedca3378225332da32daeacf8470a07",
+                "reference": "43e0f760aedca3378225332da32daeacf8470a07",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "iBarcode\\Barcode\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "damon snow",
+                    "email": "hqfdotcom@gmail.com"
+                }
+            ],
+            "description": "Generates 1D barcodes from a PHP server to a file or HTML document.",
+            "keywords": [
+                "CODABAR",
+                "Code11",
+                "Code93",
+                "EAN-13",
+                "EAN-8",
+                "EAN13",
+                "ISBN",
+                "MSI",
+                "UPC-A",
+                "UPC-E",
+                "bakery",
+                "barcode",
+                "code128",
+                "code39",
+                "code39extended",
+                "ean8",
+                "generator",
+                "i25",
+                "s25",
+                "upcext2",
+                "upcext5"
+            ],
+            "time": "2018-03-15T06:58:52+00:00"
+        },
+        {
+            "name": "ibarcode/barcodecommon",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DamonSnow/barcodecommon.git",
+                "reference": "93043bc3c801e336aa130afed1843b30a693a211"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DamonSnow/barcodecommon/zipball/93043bc3c801e336aa130afed1843b30a693a211",
+                "reference": "93043bc3c801e336aa130afed1843b30a693a211",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "iBarcode\\Common\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "damon snow",
+                    "email": "hqfdotcom@gmail.com"
+                }
+            ],
+            "description": "Base code for generating barcode with the Barcode Bakery library. See ibarcode/barcode-1d.",
+            "time": "2018-03-16T02:21:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,20 @@
+{
+    "name": "damon/i-barcode",
+    "description": "generate barcode",
+    "type": "composer-plugin",
+    "authors": [
+        {
+            "name": "DamonSnow",
+            "email": "domine_huang@unicompound.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IBarcode\\": "src/"
+        }
+    },
+    "require": {
+        "ibarcode/barcode1d": "^1.0",
+        "ibarcode/barcodecommon": "^1.0"
+    }
+}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Barcode</title>
+</head>
+<body>
+<div class="container">
+    <!-- Content here -->
+    <form id="barcodeForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="codeType">code Type</label>
+                <select id="codeType" class="form-control">
+                    <option value="codabar">Codabar</option>
+                    <option value="code11">Code 11</option>
+                    <option value="code39">Code 39</option>
+                    <option value="code39extended">Code 39 Extended</option>
+                    <option value="code93">Code 93</option>
+                    <option value="code128" selected="selected">Code 128</option>
+                    <option value="ean8">EAN-8</option>
+                    <option value="ean13">EAN-13</option>
+                    <option value="isbn">ISBN</option>
+                    <option value="i25">Interleaved 2 of 5</option>
+                    <option value="s25">Standard 2 of 5</option>
+                    <option value="msi">MSI Plessey</option>
+                    <option value="upca">UPC-A</option>
+                    <option value="upce">UPC-E</option>
+                    <option value="upcext2">UPC Extenstion 2 Digits</option>
+                    <option value="upcext5">UPC Extenstion 5 Digits</option>
+                    <option value="postnet">Postnet</option>
+                    <option value="othercode">Other Barcode</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="fileType">File Type</label>
+                <select id="fileType" class="form-control">
+                    <option value="PNG">PNG - Portable Network Graphics</option>
+                    <option value="JPEG" selected="selected">JPEG - Joint Photographic Experts Group</option>
+                    <option value="GIF">GIF - Graphics Interchange Format</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label for="dpi">DPI</label>
+                    <input type="number" min="72" max="300" class="form-control" id="dpi" placeholder="" value="72">
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <div class="form-group">
+                    <label for="thickness">Thickness</label>
+                    <input type="number" min="20" max="90" class="form-control" id="thickness" placeholder=""
+                           value="30">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="scale">Scale</label>
+                <input type="number" min="1" class="form-control" id="scale" value="1">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="rotation">Rotation</label>
+                <select id="rotation" class="form-control">
+                    <option value="0" selected="selected">No rotation</option>
+                    <option value="90">90° clockwise</option>
+                    <option value="180">180° clockwise</option>
+                    <option value="270">270° clockwise</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="font">Font</label>
+                <input type="number" min="0" max="30" class="form-control" id="font" value="8">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <label for="text">Data</label>
+                <input type="text" class="form-control" id="text" value="" placeholder="请输入条码内容" required>
+            </div>
+        </div>
+        <a style="color: #FFFFFF" id="generate" class="btn btn-primary">Generate</a>
+    </form>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11" style="margin:auto;text-align: center">
+        <img src="" alt="barcode" id="barcode" style="margin: auto;">
+    </div>
+
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.17.0/jquery.validate.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#generate').click(function () {
+            let codeType = $('#codeType').find('option:selected').val();
+            let fileType = $('#fileType').find('option:selected').val();
+            let dpi = $('#dpi').val();
+            let thickness = $('#thickness').val();
+            let scale = $('#scale').val();
+            let rotation = $('#rotation').find('option:selected').val();
+            let font = $('#font').val();
+            let text = $('#text').val();
+            let url = './barcode.php?';
+
+            if (codeType.length <= 0) {
+                alert('请选择Code Type')
+            } else {
+                url += 'codeType=' + codeType;
+            }
+
+            if (fileType.length <= 0) {
+                alert('请选择File Type')
+            } else {
+                url += '&fileType=' + fileType;
+            }
+            if (dpi.length <= 0) {
+                alert('请输入dpi')
+            } else {
+                url += '&dpi=' + dpi;
+            }
+            if (thickness.length <= 0) {
+                alert('请输入thickness')
+            } else {
+                url += '&thickness=' + thickness;
+            }
+            if (scale.length <= 0) {
+                alert('请输入scale')
+            } else {
+                url += '&scale=' + scale;
+            }
+            if (rotation.length <= 0) {
+                alert('请选择rotation')
+            } else {
+                url += '&rotation=' + rotation;
+            }
+            if (font.length <= 0) {
+                alert('请输入font')
+            } else {
+                url += '&font=' + font;
+            }
+            if (text.length <= 0) {
+                alert('请输入data')
+            } else {
+                url += '&text=' + text;
+            }
+            $('#barcode').attr('src', url);
+        });
+
+    })
+</script>
+</body>
+</html>
